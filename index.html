@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>拾荒记：撤离</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- 进入界面 -->
+  <div id="intro-screen" class="intro-screen" aria-hidden="false">
+
+    <!-- 远景层：真实图片底图（用户参考图） -->
+    <div class="intro-layer layer-bg" aria-hidden="true">
+      <div class="bg-image"></div>
+    </div>
+
+    <!-- 雨雾层（远景和中景之间，柔化柔和） -->
+    <div class="intro-layer layer-mist" aria-hidden="true">
+      <div class="mist-band mist-1"></div>
+      <div class="mist-band mist-2"></div>
+      <div class="mist-band mist-3"></div>
+    </div>
+
+    <!-- 中景层：灾后街角全景（path 曲线 + 柔色 + 雨雾） -->
+    <div class="intro-layer layer-mid" aria-hidden="true">
+
+      <!-- 左大楼（path 轮廓 + 软调） -->
+      <svg class="bld bld-1" viewBox="0 0 180 240" width="180" height="240">
+        <defs>
+          <linearGradient id="bldA" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#16121a"/>
+            <stop offset="100%" stop-color="#0a0807"/>
+          </linearGradient>
+          <filter id="bldBlur" x="-5%" y="-5%" width="110%" height="110%">
+            <feGaussianBlur stdDeviation="0.6"/>
+          </filter>
+        </defs>
+        <!-- 建筑轮廓（path 曲线 + 直角混合） -->
+        <path fill="url(#bldA)" filter="url(#bldBlur)" d="
+          M 6 0
+          L 168 0
+          L 168 240
+          L 6 240 Z
+        "/>
+        <!-- 屋顶水塔 -->
+        <rect x="130" y="-14" width="22" height="20" fill="#0e0a08" rx="1"/>
+        <rect x="135" y="-18" width="2" height="4" fill="#0e0a08"/>
+        <rect x="145" y="-18" width="2" height="4" fill="#0e0a08"/>
+        <rect x="130" y="-14" width="22" height="2" fill="#1a1410"/>
+        <!-- 窗户网格：path path 拟窗格，柔和填充 -->
+        <g opacity="0.9">
+          <!-- 楼层 1 -->
+          <rect x="14" y="20" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="32" y="20" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="50" y="20" width="9" height="11" fill="#1a1208" rx="1"/>
+          <rect x="68" y="20" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="86" y="20" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="104" y="20" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="122" y="20" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="140" y="20" width="9" height="11" fill="#0a0807" rx="1"/>
+          <!-- 楼层 2 -->
+          <rect x="14" y="40" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="32" y="40" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="50" y="40" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="68" y="40" width="9" height="11" fill="#1a1208" rx="1"/>
+          <rect x="86" y="40" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="104" y="40" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="122" y="40" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="140" y="40" width="9" height="11" fill="#0a0807" rx="1"/>
+          <!-- 楼层 3 -->
+          <rect x="14" y="60" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="32" y="60" width="9" height="11" fill="#1a1208" rx="1"/>
+          <rect x="50" y="60" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="68" y="60" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="86" y="60" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="104" y="60" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="122" y="60" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="140" y="60" width="9" height="11" fill="#0a0807" rx="1"/>
+          <!-- 楼层 4 -->
+          <rect x="14" y="80" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="32" y="80" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="50" y="80" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="68" y="80" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="86" y="80" width="9" height="11" fill="#1a1208" rx="1"/>
+          <rect x="104" y="80" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="122" y="80" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="140" y="80" width="9" height="11" fill="#0a0807" rx="1"/>
+          <!-- 楼层 5 -->
+          <rect x="14" y="100" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="32" y="100" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="50" y="100" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="68" y="100" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="86" y="100" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="104" y="100" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="122" y="100" width="9" height="11" fill="#1a1208" rx="1"/>
+          <rect x="140" y="100" width="9" height="11" fill="#0a0807" rx="1"/>
+          <!-- 楼层 6 -->
+          <rect x="14" y="120" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="32" y="120" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="50" y="120" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="68" y="120" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="86" y="120" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="104" y="120" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="122" y="120" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="140" y="120" width="9" height="11" fill="#0a0807" rx="1"/>
+        </g>
+        <!-- 亮窗（暖黄闪烁） -->
+        <rect x="32" y="60" width="9" height="11" fill="#ffb86b" opacity="0.85" rx="1">
+          <animate attributeName="opacity" values="0.85;0.5;0.85" dur="4s" repeatCount="indefinite"/>
+        </rect>
+        <rect x="68" y="80" width="9" height="11" fill="#ffb86b" opacity="0.7" rx="1"/>
+        <rect x="122" y="100" width="9" height="11" fill="#ffb86b" opacity="0.6" rx="1"/>
+        <!-- 暖光在窗上投出 -->
+        <ellipse cx="36" cy="65" rx="14" ry="14" fill="#ffb86b" opacity="0.08"/>
+        <ellipse cx="72" cy="85" rx="12" ry="12" fill="#ffb86b" opacity="0.06"/>
+        <!-- 一楼大门（卷帘半开 + 玻璃反射） -->
+        <rect x="68" y="180" width="60" height="60" fill="#0a0807"/>
+        <rect x="70" y="182" width="56" height="56" fill="#1a1410"/>
+        <g stroke="#0a0807" stroke-width="0.5" opacity="0.7">
+          <line x1="70" y1="192" x2="126" y2="192"/>
+          <line x1="70" y1="202" x2="126" y2="202"/>
+          <line x1="70" y1="212" x2="126" y2="212"/>
+          <line x1="70" y1="222" x2="126" y2="222"/>
+        </g>
+        <rect x="74" y="186" width="14" height="6" fill="#3a2818" opacity="0.6"/>
+      </svg>
+
+      <!-- 中楼（矮·街边小楼） -->
+      <svg class="bld bld-2" viewBox="0 0 140 200" width="140" height="200">
+        <defs>
+          <linearGradient id="bldB" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#16121a"/>
+            <stop offset="100%" stop-color="#0a0807"/>
+          </linearGradient>
+        </defs>
+        <path fill="url(#bldB)" d="M 4 0 L 134 0 L 134 200 L 4 200 Z"/>
+        <!-- 顶部小招牌 -->
+        <rect x="30" y="8" width="80" height="18" fill="#1a0a05" rx="1"/>
+        <rect x="30" y="8" width="80" height="2" fill="#3a302a"/>
+        <text x="70" y="20" font-family="ZCOOL KuaiLe" font-size="11" fill="#8a7d6b" text-anchor="middle" letter-spacing="3">公 告</text>
+        <!-- 窗户 -->
+        <g>
+          <rect x="14" y="36" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="32" y="36" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="50" y="36" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="68" y="36" width="9" height="11" fill="#1a1208" rx="1"/>
+          <rect x="86" y="36" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="104" y="36" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="14" y="56" width="9" height="11" fill="#1a1208" rx="1"/>
+          <rect x="32" y="56" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="50" y="56" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="68" y="56" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="86" y="56" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="104" y="56" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="14" y="76" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="32" y="76" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="50" y="76" width="9" height="11" fill="#1a1208" rx="1"/>
+          <rect x="68" y="76" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="86" y="76" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="104" y="76" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="14" y="96" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="32" y="96" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="50" y="96" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="68" y="96" width="9" height="11" fill="#0a0807" rx="1"/>
+          <rect x="86" y="96" width="9" height="11" fill="#1a1208" rx="1"/>
+          <rect x="104" y="96" width="9" height="11" fill="#0a0807" rx="1"/>
+        </g>
+        <rect x="68" y="36" width="9" height="11" fill="#ffb86b" opacity="0.75" rx="1"/>
+        <!-- 一楼大门 -->
+        <rect x="56" y="156" width="32" height="44" fill="#0a0807"/>
+        <rect x="58" y="158" width="28" height="40" fill="#1a0a05"/>
+        <rect x="71" y="178" width="2" height="3" fill="#8a6a36"/>
+      </svg>
+
+      <!-- 街边公告栏（path 曲线框） -->
+      <svg class="bld bld-board" viewBox="0 0 80 110" width="80" height="110">
+        <defs>
+          <linearGradient id="boardG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1a1410"/>
+            <stop offset="100%" stop-color="#0a0807"/>
+          </linearGradient>
+        </defs>
+        <!-- 牌面 -->
+        <path fill="url(#boardG)" stroke="#3a302a" stroke-width="1" d="M 3 8 L 77 8 L 77 68 L 3 68 Z"/>
+        <!-- 撕剩的几张纸 -->
+        <rect x="8" y="14" width="22" height="16" fill="#6a5a3a" opacity="0.6"/>
+        <rect x="8" y="14" width="22" height="2" fill="#4a3a1a"/>
+        <rect x="11" y="19" width="14" height="0.6" fill="#1a0a05"/>
+        <rect x="11" y="23" width="10" height="0.6" fill="#1a0a05"/>
+        <rect x="11" y="27" width="12" height="0.6" fill="#1a0a05"/>
+        <rect x="34" y="16" width="32" height="14" fill="#7a5a3a" opacity="0.5"/>
+        <rect x="34" y="16" width="32" height="2" fill="#4a3a1a"/>
+        <rect x="37" y="20" width="20" height="0.6" fill="#1a0a05"/>
+        <rect x="37" y="24" width="16" height="0.6" fill="#1a0a05"/>
+        <rect x="11" y="36" width="40" height="22" fill="#8a6a3a" opacity="0.45"/>
+        <rect x="11" y="36" width="40" height="2" fill="#4a3a1a"/>
+        <rect x="14" y="40" width="28" height="0.6" fill="#1a0a05"/>
+        <rect x="14" y="44" width="24" height="0.6" fill="#1a0a05"/>
+        <rect x="14" y="48" width="26" height="0.6" fill="#1a0a05"/>
+        <rect x="14" y="52" width="20" height="0.6" fill="#1a0a05"/>
+        <!-- 撕剩的纸角 -->
+        <path fill="#1a0a05" d="M 56 36 L 62 36 L 56 44 Z"/>
+        <!-- 立柱 -->
+        <rect x="18" y="68" width="4" height="42" fill="#0e0a08"/>
+        <rect x="58" y="68" width="4" height="42" fill="#0e0a08"/>
+      </svg>
+
+      <!-- 远处积水街道反光（横条） -->
+      <div class="street-water">
+        <div class="water-streak w1"></div>
+        <div class="water-streak w2"></div>
+        <div class="water-streak w3"></div>
+        <div class="water-streak w4"></div>
+        <div class="water-streak w5"></div>
+      </div>
+
+      <!-- 小店（右·path 曲线轮廓） -->
+      <svg class="bld bld-shop" viewBox="0 0 220 160" width="220" height="160">
+        <defs>
+          <linearGradient id="shopRoof" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1f1a16"/>
+            <stop offset="100%" stop-color="#0e0a08"/>
+          </linearGradient>
+          <linearGradient id="shopBody" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1a1410"/>
+            <stop offset="100%" stop-color="#0e0a08"/>
+          </linearGradient>
+          <radialGradient id="lampGlow" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0%" stop-color="#ffb86b" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#ffb86b" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <!-- 屋顶（path 曲线 + 圆角） -->
+        <path fill="url(#shopRoof)" d="M 4 50 Q 4 48, 6 48 L 18 28 Q 20 26, 22 28 L 198 28 Q 200 26, 202 28 L 214 48 Q 216 50, 216 50 L 216 56 L 4 56 Z"/>
+        <!-- 屋顶竖纹（铁皮） -->
+        <g stroke="#0a0807" stroke-width="0.4" opacity="0.5">
+          <line x1="40" y1="30" x2="42" y2="50"/>
+          <line x1="70" y1="30" x2="72" y2="50"/>
+          <line x1="100" y1="30" x2="102" y2="50"/>
+          <line x1="130" y1="30" x2="132" y2="50"/>
+          <line x1="160" y1="30" x2="162" y2="50"/>
+          <line x1="190" y1="30" x2="192" y2="50"/>
+        </g>
+        <!-- 招牌 -->
+        <rect x="40" y="62" width="140" height="28" fill="#0a0807" stroke="#b85c4a" stroke-width="1" rx="1"/>
+        <rect x="40" y="62" width="140" height="3" fill="#b85c4a" opacity="0.5"/>
+        <text x="110" y="81" font-family="ZCOOL KuaiLe, sans-serif" font-size="16" fill="#ff8866" text-anchor="middle" letter-spacing="8">
+          便民小店
+          <animate attributeName="opacity" values="1;1;1;0.4;1;1;0.5;1" dur="6s" repeatCount="indefinite"/>
+        </text>
+        <!-- 招牌外发光 -->
+        <rect x="40" y="62" width="140" height="28" fill="none" stroke="#ff6633" stroke-width="0.6" opacity="0.5" rx="1">
+          <animate attributeName="opacity" values="0.5;0.5;0.5;0.1;0.5;0.5;0.2;0.5" dur="6s" repeatCount="indefinite"/>
+        </rect>
+        <!-- 招牌灯下光晕 -->
+        <ellipse cx="110" cy="78" rx="80" ry="20" fill="url(#lampGlow)"/>
+        <!-- 墙体（path 圆角） -->
+        <path fill="url(#shopBody)" d="M 8 90 L 8 152 Q 8 156, 12 156 L 208 156 Q 212 156, 212 152 L 212 90 Z"/>
+        <line x1="8" y1="90" x2="212" y2="90" stroke="#3a2818" stroke-width="1"/>
+        <!-- 墙面木板纹 -->
+        <g stroke="#0a0807" stroke-width="0.3" opacity="0.4">
+          <line x1="22" y1="92" x2="22" y2="156"/>
+          <line x1="38" y1="92" x2="38" y2="156"/>
+          <line x1="54" y1="92" x2="54" y2="156"/>
+          <line x1="70" y1="92" x2="70" y2="156"/>
+          <line x1="86" y1="92" x2="86" y2="156"/>
+          <line x1="102" y1="92" x2="102" y2="156"/>
+          <line x1="118" y1="92" x2="118" y2="156"/>
+          <line x1="134" y1="92" x2="134" y2="156"/>
+          <line x1="150" y1="92" x2="150" y2="156"/>
+          <line x1="166" y1="92" x2="166" y2="156"/>
+          <line x1="182" y1="92" x2="182" y2="156"/>
+          <line x1="198" y1="92" x2="198" y2="156"/>
+        </g>
+        <!-- 门（玻璃反射） -->
+        <rect x="98" y="108" width="32" height="48" fill="#0a0807" rx="1"/>
+        <rect x="100" y="110" width="28" height="44" fill="#1a0a05" rx="1"/>
+        <rect x="100" y="110" width="28" height="14" fill="#3a2818" opacity="0.5"/>
+        <rect x="98" y="108" width="32" height="2" fill="#3a2818"/>
+        <circle cx="126" cy="132" r="1.5" fill="#c8a063"/>
+        <!-- 左侧窗（暖光透出） -->
+        <rect x="28" y="108" width="22" height="24" fill="#0a0807" rx="1"/>
+        <rect x="30" y="110" width="18" height="20" fill="#3a2818" rx="0.5"/>
+        <rect x="30" y="110" width="18" height="20" fill="#ffb86b" opacity="0.18" rx="0.5"/>
+        <line x1="39" y1="110" x2="39" y2="130" stroke="#0a0807" stroke-width="0.6"/>
+        <line x1="30" y1="120" x2="48" y2="120" stroke="#0a0807" stroke-width="0.4"/>
+        <!-- 右侧窗 -->
+        <rect x="178" y="108" width="22" height="24" fill="#0a0807" rx="1"/>
+        <rect x="180" y="110" width="18" height="20" fill="#3a2818" rx="0.5"/>
+        <rect x="180" y="110" width="18" height="20" fill="#ffb86b" opacity="0.15" rx="0.5"/>
+        <line x1="189" y1="110" x2="189" y2="130" stroke="#0a0807" stroke-width="0.6"/>
+        <line x1="180" y1="120" x2="198" y2="120" stroke="#0a0807" stroke-width="0.4"/>
+        <!-- 灯下小招牌（侧挂） -->
+        <rect x="178" y="68" width="36" height="12" fill="#0a0807" stroke="#8a6a36" stroke-width="0.5" rx="1"/>
+        <line x1="184" y1="68" x2="184" y2="62" stroke="#8a6a36" stroke-width="0.6"/>
+        <line x1="208" y1="68" x2="208" y2="62" stroke="#8a6a36" stroke-width="0.6"/>
+      </svg>
+
+      <!-- 临时登记处方向牌（参考图核心元素） -->
+      <svg class="bld bld-direction" viewBox="0 0 200 60" width="200" height="60">
+        <defs>
+          <linearGradient id="dirBoard" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#3a302a"/>
+            <stop offset="100%" stop-color="#1a1410"/>
+          </linearGradient>
+        </defs>
+        <!-- 立柱 -->
+        <rect x="12" y="20" width="3" height="40" fill="#0e0a08"/>
+        <!-- 牌面 -->
+        <path fill="url(#dirBoard)" stroke="#5a4a3a" stroke-width="1" d="M 4 4 L 196 4 L 196 28 L 4 28 Z"/>
+        <text x="100" y="20" font-family="ZCOOL KuaiLe, sans-serif" font-size="14" fill="#e8d9b8" text-anchor="middle" letter-spacing="3">临时登记处 →</text>
+        <!-- 牌面反光 -->
+        <rect x="4" y="4" width="192" height="3" fill="#5a4a3a" opacity="0.4"/>
+      </svg>
+    </div>
+
+    <!-- 雨雾层（远景和中景之间） -->
+    <div class="intro-layer layer-mist" aria-hidden="true">
+      <div class="mist-band mist-1"></div>
+      <div class="mist-band mist-2"></div>
+      <div class="mist-band mist-3"></div>
+    </div>
+
+    <!-- 灯光层 + 灯柱（精致 SVG） -->
+    <div class="intro-layer layer-light" aria-hidden="true">
+      <!-- 灯光大光晕（从右上斜射到画面底部偏左） -->
+      <div class="lamplight-glow"></div>
+      <div class="lamplight-cone"></div>
+      <div class="lamplight-cone-inner"></div>
+
+      <!-- 灯光体积感 SVG（柔和锥形 + 高斯模糊） -->
+      <svg class="lamplight-svg" viewBox="0 0 1440 900" preserveAspectRatio="none">
+        <defs>
+          <radialGradient id="lampVol" cx="0.92" cy="0" r="1.2">
+            <stop offset="0%" stop-color="#ffd99a" stop-opacity="0.45"/>
+            <stop offset="40%" stop-color="#ffd99a" stop-opacity="0.12"/>
+            <stop offset="100%" stop-color="#ffd99a" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="lampBlur">
+            <feGaussianBlur stdDeviation="20"/>
+          </filter>
+        </defs>
+        <ellipse cx="1320" cy="0" rx="600" ry="900" fill="url(#lampVol)" filter="url(#lampBlur)"/>
+      </svg>
+
+      <!-- 空气颗粒（25 个浮动小点） -->
+      <span class="dust d1"></span>
+      <span class="dust d2"></span>
+      <span class="dust d3"></span>
+      <span class="dust d4"></span>
+      <span class="dust d5"></span>
+      <span class="dust d6"></span>
+      <span class="dust d7"></span>
+      <span class="dust d8"></span>
+      <span class="dust d9"></span>
+      <span class="dust d10"></span>
+      <span class="dust d11"></span>
+      <span class="dust d12"></span>
+      <span class="dust d13"></span>
+      <span class="dust d14"></span>
+      <span class="dust d15"></span>
+      <span class="dust d16"></span>
+      <span class="dust d17"></span>
+      <span class="dust d18"></span>
+      <span class="dust d19"></span>
+      <span class="dust d20"></span>
+      <span class="dust d21"></span>
+      <span class="dust d22"></span>
+      <span class="dust d23"></span>
+      <span class="dust d24"></span>
+      <span class="dust d25"></span>
+
+      <!-- 灯柱 SVG 已删除：底图已包含真实灯柱 -->
+
+    </div>
+
+    <!-- 雨丝层 -->
+    <div class="intro-layer layer-rain" aria-hidden="true">
+      <span class="raindrop"></span><span class="raindrop"></span><span class="raindrop"></span>
+      <span class="raindrop"></span><span class="raindrop"></span><span class="raindrop"></span>
+      <span class="raindrop"></span><span class="raindrop"></span><span class="raindrop"></span>
+      <span class="raindrop"></span><span class="raindrop"></span><span class="raindrop"></span>
+      <span class="raindrop"></span><span class="raindrop"></span><span class="raindrop"></span>
+      <span class="raindrop"></span><span class="raindrop"></span><span class="raindrop"></span>
+      <span class="raindrop"></span><span class="raindrop"></span><span class="raindrop"></span>
+      <span class="raindrop"></span><span class="raindrop"></span><span class="raindrop"></span>
+      <span class="raindrop"></span><span class="raindrop"></span><span class="raindrop"></span>
+      <span class="raindrop"></span><span class="raindrop"></span><span class="raindrop"></span>
+      <span class="raindrop"></span><span class="raindrop"></span><span class="raindrop"></span>
+      <span class="raindrop"></span><span class="raindrop"></span><span class="raindrop"></span>
+      <span class="raindrop"></span><span class="raindrop"></span><span class="raindrop"></span>
+      <span class="raindrop"></span><span class="raindrop"></span><span class="raindrop"></span>
+      <span class="raindrop"></span><span class="raindrop"></span><span class="raindrop"></span>
+      <span class="raindrop"></span><span class="raindrop"></span><span class="raindrop"></span>
+    </div>
+
+    <!-- 标题 -->
+    <div class="intro-layer layer-title" aria-hidden="true">
+      <h1 class="intro-title-main">拾荒记</h1>
+      <p class="intro-title-sub">—— 如此往复7日，然后离开 ——</p>
+    </div>
+
+    <!-- 旧纸残页（灯柱附近的破损纸张，仅作装饰，1 秒后保留可见状态） -->
+    <div class="intro-layer layer-decor-papers" id="intro-decor-papers" aria-hidden="true"></div>
+
+    <!-- 主入口卡：从右上角路灯光处飘来落到中央（点击翻阅七日记录） -->
+    <div class="intro-layer layer-entry-card" id="intro-entry-card" aria-hidden="false"></div>
+
+    <!-- 共享 SVG 滤镜资源（纤维+水渍+磨损） -->
+    <svg class="svg-filters" aria-hidden="true">
+      <defs>
+        <!-- 纤维噪点滤镜：给卡片加纸张纤维 + 暗化 -->
+        <filter id="paperFiber" x="0%" y="0%" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" result="noise"/>
+          <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0.35  0 0 0 0 0.28  0 0 0 0 0.18  0 0 0 0.18 0" result="darkFiber"/>
+          <feComposite in="darkFiber" in2="SourceGraphic" operator="in" result="texturedFiber"/>
+          <feMerge>
+            <feMergeNode in="SourceGraphic"/>
+            <feMergeNode in="texturedFiber"/>
+          </feMerge>
+        </filter>
+        <!-- 软水渍：柔化边缘的暗化 -->
+        <filter id="waterStain" x="-10%" y="-10%" width="120%" height="120%">
+          <feGaussianBlur stdDeviation="6"/>
+        </filter>
+        <!-- 卡片整体噪点 -->
+        <filter id="paperGrain" x="0%" y="0%" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="2.5" numOctaves="2" seed="7"/>
+          <feColorMatrix type="matrix" values="0 0 0 0 0.5  0 0 0 0 0.45  0 0 0 0 0.35  0 0 0 0.08 0"/>
+          <feComposite in2="SourceGraphic" operator="in"/>
+        </filter>
+      </defs>
+    </svg>
+
+    <!-- 黄铜开始按钮 -->
+    <div class="intro-layer layer-cta" aria-hidden="false">
+      <p class="cta-pre-hint">如何离开？</p>
+      <button type="button" class="intro-start-btn" id="intro-start-btn">
+        <span class="btn-cap"></span>
+        <span class="btn-face">
+          <span class="btn-text">开 始 拾 荒</span>
+          <span class="btn-hint">点击日记，翻看七日记录</span>
+        </span>
+      </button>
+    </div>
+
+    <!-- 七日记录旋转卡组（点击首页小卡时弹出） -->
+    <div class="day-carousel" id="day-carousel" aria-hidden="true">
+      <div class="carousel-backdrop" id="carousel-backdrop"></div>
+      <div class="carousel-stage">
+        <!-- 7 张日记卡由 JS 注入 -->
+        <div class="carousel-track" id="carousel-track"></div>
+        <!-- 左箭头 -->
+        <button type="button" class="carousel-arrow carousel-arrow-left" id="carousel-left" aria-label="前一天">‹</button>
+        <!-- 右箭头 -->
+        <button type="button" class="carousel-arrow carousel-arrow-right" id="carousel-right" aria-label="后一天">›</button>
+        <!-- 圆点导航 -->
+        <div class="carousel-dots" id="carousel-dots"></div>
+        <!-- 关闭按钮 -->
+        <button type="button" class="carousel-close" id="carousel-close" aria-label="关闭七日记录">✕</button>
+        <!-- 顶部说明 -->
+        <div class="carousel-hint">七日记录 · 左右滑动或点击翻页</div>
+      </div>
+    </div>
+
+    <!-- 音效开关 -->
+    <button type="button" class="intro-sound" id="intro-sound" aria-label="切换音效">🔊</button>
+
+  </div>
+
+  <!-- 原有游戏主体 -->
+  <div id="app" style="display:none;"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
